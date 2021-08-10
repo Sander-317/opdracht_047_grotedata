@@ -48,13 +48,13 @@ function addRegionArrayToDom(array){
 
 function getAllTheFemales(array){
   const allFemales = array.filter((item) => item.gender === "female")
-  console.log(allFemales)
+  // console.log(allFemales)
   getAllTheFemalesOlderThan30(allFemales)
 }
 
 function getAllTheFemalesOlderThan30(array) {
   const femaleOlderThan30 = array.filter((item) => item.age >= 30)
-  console.log(femaleOlderThan30)
+  // console.log(femaleOlderThan30)
   isZodiacsignSteenbok(femaleOlderThan30)
 }
 
@@ -69,18 +69,32 @@ function isZodiacsignSteenbok(array) {
   //  return 
    
  })
-console.log(isSteenbok)
+// console.log(isSteenbok)
 const newArray = removeUndefinedFromArray(isSteenbok)
-console.log(newArray)
+// console.log(newArray)
 }
 
 function removeUndefinedFromArray(array){
   const filteredArray = array.filter( (item) => {
           return  item !== undefined
   })
-  return filteredArray
+  addZodiacFemaleToDom(filteredArray)
 }
 
+function addZodiacFemaleToDom(array){
+  clearTheDom()
+  array.map((item) =>{
+    let newLiTag = document.createElement("li")
+    let newImg = document.createElement("img")
+    let firstName = item.name
+    let lastName = item.surname
+    let photo = item.photo
+    newLiTag.innerHTML = `voornaam: ${firstName} achternaam: ${lastName} <br>`
+    newImg.src = `${photo}`
+    newLiTag.appendChild(newImg)
+    viewport.appendChild(newLiTag)
+  })
+}
 
 
 // (date, min, max) => (dayMonth.getTime() >= steenbokStartDate.getTime() && dayMonth.getTime() <= steenbokEndDate.getTime())
