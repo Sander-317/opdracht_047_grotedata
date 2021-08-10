@@ -1,7 +1,9 @@
 // console.log("script is hier")
-const button = document.getElementById("landenLijst")
+const buttonLandenLijst = document.getElementById("landenLijst")
+const buttonFindFemaleSteenbok = document.getElementById("find-female-steenbok")
 const viewport = document.querySelector("#viewport")
-button.addEventListener("click", () => addRegionArrayToDom(makeRegionArray(randomPersonData)))
+buttonLandenLijst.addEventListener("click", () => addRegionArrayToDom(makeRegionArray(randomPersonData)))
+buttonFindFemaleSteenbok .addEventListener("click", () => getAllTheFemales(randomPersonData))
 
 // test(randomPersonData)
 // console.log(randomPersonData)
@@ -42,7 +44,7 @@ function addRegionArrayToDom(array){
 
 }
 
-getAllTheFemales(randomPersonData)
+// getAllTheFemales(randomPersonData)
 
 function getAllTheFemales(array){
   const allFemales = array.filter((item) => item.gender === "female")
@@ -76,7 +78,7 @@ console.log(`isSteenbok =${isSteenbok}`)
 }
 // (date, min, max) => (dayMonth.getTime() >= steenbokStartDate.getTime() && dayMonth.getTime() <= steenbokEndDate.getTime())
 function dateCheck(date, min, max){
-   if (date >= min && date <= max) 
+   if (date.getTime() >= min.getTime() && date.getTime() <= max.getTime()) 
     return true
   else return false
 }
