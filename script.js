@@ -5,27 +5,9 @@ const viewport = document.querySelector("#viewport")
 buttonLandenLijst.addEventListener("click", () => addRegionArrayToDom(makeRegionArray(randomPersonData)))
 buttonFindFemaleSteenbok .addEventListener("click", () => getAllTheFemales(randomPersonData))
 
-// test(randomPersonData)
-// console.log(randomPersonData)
-
-
-
-// function findRegion(randomPersonData) {
-//   const newArray = randomPersonData.sort((item) => item.region)
-//    newArray.map((item) => {
-//   const newLi = document.createElement("li")
-//     newLi.innerHTML = item.region
-//     viewport.appendChild(newLi)
-//  })
-
-//  console.log(newArray.sort())
-// }
-
 function clearTheDom() {
   viewport.innerHTML = ""
 }
-
-
 
 function makeRegionArray (array) {
   const regionArray = array.map((item) => {
@@ -43,8 +25,6 @@ function addRegionArrayToDom(array){
   })
 
 }
-
-// getAllTheFemales(randomPersonData)
 
 function getAllTheFemales(array){
   const allFemales = array.filter((item) => item.gender === "female")
@@ -65,10 +45,7 @@ function isZodiacsignSteenbok(array) {
    const month = splitBirthday[0]
    if ((month == 1 && day <= 20) || (month == 12 && day >= 22))
     return item
-  // else
-  //  return 
-   
- })
+})
 // console.log(isSteenbok)
 const newArray = removeUndefinedFromArray(isSteenbok)
 // console.log(newArray)
