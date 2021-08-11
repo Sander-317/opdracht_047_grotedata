@@ -83,42 +83,27 @@ function removeUndefinedFromArray(array){
 
 function addZodiacFemaleToDom(array){
   clearTheDom()
+  // array.sort((a, b) => a.name !== b.name ? a.name < b.name ? -1 : 1 : 0);
+  array.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+     if(a.name < b.name) {return -1}
+     if (a.name > b.name) {return 1}
+     return 0
+  })
   array.map((item) =>{
     let newLiTag = document.createElement("li")
     let newImg = document.createElement("img")
-    let firstName = item.name
-    let lastName = item.surname
-    let photo = item.photo
-    newLiTag.innerHTML = `voornaam: ${firstName} achternaam: ${lastName} <br>`
-    newImg.src = `${photo}`
+    newLiTag.innerHTML = `voornaam: ${item.name} achternaam: ${item.surname} <br>`
+    newImg.src = `${ item.photo}`
     newLiTag.appendChild(newImg)
     viewport.appendChild(newLiTag)
   })
 }
 
+// addZodiacFemaleToDom(randomPersonData)
+getAllAdults(randomPersonData)
 
-// (date, min, max) => (dayMonth.getTime() >= steenbokStartDate.getTime() && dayMonth.getTime() <= steenbokEndDate.getTime())
-// function dateCheck(date, min, max){
-//    if (date.getTime() >= min.getTime() && date.getTime() <= max.getTime()) 
-//     return true
-//   else return false
-// }
-
-// function isZodiacsignSteenbok(array) {
-//   const steenbokStartDate = new Date(12-22)
-//   const steenbokEndDate = new Date(1-19)
-//  const isSteenbok = array.map((item) => {
-//    const splitBirthday = item.birthday.mdy.split("/")
-//    const day = splitBirthday[1]
-//    const month = splitBirthday[0]
-//    const dayMonth = new Date(`${month}`-`${day}`)
-//    console.log("dit is daymonth",dayMonth)
-//    const steenbok = dateCheck(dayMonth, steenbokStartDate,steenbokEndDate)
-//    if (steenbok === true)
-//    console.log(steenbok)
-//    console.log(typeof steenbok)
-//    return console.log(item)
-  
-//  })
-// console.log(`isSteenbok =${isSteenbok}`)
-// }
+function getAllAdults(array) {
+   const allAdults = array.filter((item) =>item.age >= 18)
+   console.log(allAdults)
+}
