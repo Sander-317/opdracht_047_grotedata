@@ -14,14 +14,12 @@ function clearTheDom() {
 
 function getAllTheFemales(array){
   const allFemales = array.filter((item) => item.gender === "female")
-  // console.log(allFemales)
   getAllTheFemalesOlderThan30(allFemales)
 }
 
 function getAllTheFemalesOlderThan30(array) {
   const femaleOlderThan30 = array.filter((item) => item.age >= 30)
-  // console.log(femaleOlderThan30)
-  isZodiacsignSteenbok(femaleOlderThan30)
+ isZodiacsignSteenbok(femaleOlderThan30)
 }
 
 function isZodiacsignSteenbok(array) {
@@ -32,16 +30,13 @@ function isZodiacsignSteenbok(array) {
    if ((month == 1 && day <= 20) || (month == 12 && day >= 22))
     return item
 })
-// console.log(isSteenbok)
 const newArray = removeUndefinedFromArray(isSteenbok)
-// console.log(newArray)
 }
 
 function removeUndefinedFromArray(array){
   const filteredArray = array.filter( (item) => {
           return  item !== undefined
   })
-  // console.log(filteredArray)
   addZodiacFemaleToDom(filteredArray)
 }
 
@@ -66,17 +61,14 @@ function addZodiacFemaleToDom(array){
 
 function getAllAdults(array) {
    const allAdults = array.filter((item) =>item.age >= 18)
-  //  console.log("ALL ADULTS",allAdults)
 }
 
 function getAverageAge(array) {
   const totalAge = array.reduce((total, item) =>{
               return total + item.age
   }, 0)
-  // console.log(totalAge)
   const averageAge = Math.round(totalAge / array.length)
   addAverageAgeToDom(averageAge)
-  // console.log(averageAge) 
 }
 
 function addAverageAgeToDom(item){
